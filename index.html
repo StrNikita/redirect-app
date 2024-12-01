@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirect App</title>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+    <script>
+      // Получаем параметры из URL
+      const params = new URLSearchParams(window.location.search);
+
+      // Получаем значение параметра `target`
+      const target = params.get("target");
+
+      // Карта разрешенных ссылок
+      const links = {
+        google: "https://www.google.com",
+        youtube: "https://www.youtube.com",
+        github: "https://github.com",
+      };
+
+      // Проверяем, есть ли указанный параметр в карте ссылок
+      if (target && links[target]) {
+        // Редирект на соответствующий URL
+        window.location.href = links[target];
+      } else {
+        // Если параметр отсутствует или некорректен
+        document.body.innerHTML =
+          "<h1>Invalid or missing target parameter!</h1>";
+      }
+    </script>
+  </body>
+</html>
